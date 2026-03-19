@@ -67,6 +67,8 @@ void loop() {
       printToScreen("Sent: " + message);
     } else {
       printToScreen("Send failed: " + message);
+      delay(100);
+      return;
     }
 
     delay(50);
@@ -100,6 +102,8 @@ void loop() {
     if (radio.available()) {
       radio.read(&payload, radio.getPayloadSize());
       printToScreen("Received:\n" + String(payload));
+    } else {
+      return;
     }
 
     delay(50);
